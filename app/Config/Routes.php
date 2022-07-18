@@ -38,6 +38,11 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->post('/tambahData', 'Home::tambahData');
 
+$routes->get('/ubahBarang/(:num)', 'Home::ubahBarang/$1');
+$routes->post('/sendUbahBarang/(:num)', 'Home::sendUbahBarang/$1');
+$routes->post('/sendHapusBarang/(:num)', 'Home::sendHapusBarang/$1');
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

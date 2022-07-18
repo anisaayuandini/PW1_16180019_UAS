@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
-    <title>Barang</title>
+    <title>Ubah Barang</title>
 </head>
 
 <body>
@@ -29,57 +29,27 @@
                 <?php endif; ?>
             </div>
             <div class="col-md-6">
-                <form action="/tambahData" method="POST">
-
+                <form action="/sendUbahBarang/<?= $barang['id']; ?>" method="POST">
+                    <input type="hidden" name="id" id="id" class="form-control" value="<?= $barang['id']; ?>" aria-describedby="" required>
                     <div class="form-group">
                         <label for="name">Nama Barang</label>
-                        <input type="text" name="name" id="name" class="form-control" aria-describedby="" required>
+                        <input type="text" name="name" id="name" class="form-control" value="<?= $barang['name']; ?>" aria-describedby="" required>
                     </div>
                     <div class="form-group">
                         <label for="qty">Quality</label>
-                        <input type="text" name="qty" id="qty" class="form-control" aria-describedby="" required>
+                        <input type="text" name="qty" id="qty" class="form-control" value="<?= $barang['qty']; ?>" aria-describedby="" required>
                     </div>
                     <div class="form-group">
                         <label for="price">Price</label>
-                        <input type="text" name="price" id="price" class="form-control" aria-describedby="" required>
+                        <input type="text" name="price" id="price" class="form-control" value="<?= $barang['price']; ?>" aria-describedby="" required>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Tambah</button>
+                    <button type="submit" class="btn btn-primary">Ubah</button>
 
                 </form>
 
             </div>
-            <div class="col-md-6">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Nama Barang</th>
-                            <th scope="col">Quality</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $no = 1;
-                        foreach ($barang as $brg) : ?>
-                            <tr>
-                                <th scope="row"><?= $no++; ?> </th>
-                                <td><?= $brg['name']; ?></td>
-                                <td><?= $brg['qty']; ?></td>
-                                <td><?= $brg['price']; ?></td>
-                                <td>
-                                    <a href="ubahBarang/<?= $brg['id']; ?>" class="btn btn-warning">Ubah</a>
-                                    <form action="/sendHapusBarang/<?= $brg['id']; ?>" method="POST">
-                                        <input type="hidden" name="name" id="name" value="<?= $brg['name']; ?>" aria-describedby="">
-                                        <button type="submit" class="btn btn-danger">Hapus</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
+
         </div>
     </div>
 
